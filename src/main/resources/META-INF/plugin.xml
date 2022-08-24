@@ -26,6 +26,10 @@
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
         <configurationType implementation="wzq.jcstress.plugin.configuration.JCStressConfigurationType"/>
-        <runLineMarkerContributor language="JAVA" implementationClass="wzq.jcstress.plugin.configuration.JCStressRunLineMarkerContributor"/>
+        <runConfigurationProducer implementation="wzq.jcstress.plugin.configuration.JCStressConfigurationProducer"/>
+        <runLineMarkerContributor
+                language="JAVA"
+                implementationClass="wzq.jcstress.plugin.configuration.JCStressRunLineMarkerContributor"
+        />
     </extensions>
 </idea-plugin>
