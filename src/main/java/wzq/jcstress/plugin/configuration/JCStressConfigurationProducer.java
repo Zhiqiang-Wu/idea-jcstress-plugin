@@ -1,14 +1,18 @@
 package wzq.jcstress.plugin.configuration;
 
+import com.intellij.execution.JavaExecutionUtil;
 import com.intellij.execution.Location;
 import com.intellij.execution.actions.ConfigurationContext;
 import com.intellij.execution.configurations.ConfigurationFactory;
 import com.intellij.execution.configurations.ConfigurationTypeUtil;
 import com.intellij.execution.junit.JavaRunConfigurationProducerBase;
+import com.intellij.openapi.module.Module;
 import com.intellij.openapi.util.Ref;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiElement;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 /**
  * @author 吴志强
@@ -32,9 +36,15 @@ public class JCStressConfigurationProducer extends JavaRunConfigurationProducerB
             return false;
         }
 
+        sourceElement.set(psiClass);
+
+        this.setupConfigurationModule(context, configuration);
+
+        Module originalModule = configuration.getConfigurationModule().getModule();
+        configuration.restoreOriginalModule(originalModule);
         configuration.setName(psiClass.getName());
         configuration.setWorkingDirectory("$MODULE_WORKING_DIR$");
-        configuration.setProgramParameters(psiClass.getName());
+        configuration.setProgramParameters(psiClass.getQualifiedName());
 
         return true;
     }
@@ -50,6 +60,23 @@ public class JCStressConfigurationProducer extends JavaRunConfigurationProducerB
         if (!(psiElement instanceof PsiClass psiClass)) {
             return false;
         }
+
+        if (!psiClass.hasAnnotation("org.openjdk.jcstress.annotations.JCStressTest")) {
+            return false;
+        }
+
+        if (!Objects.equals(psiClass.getName(), configuration.getProgramParameters())) {
+            return false;
+        }
+
+        location = JavaExecutionUtil.stepIntoSingleClass(location);
+        Module originalModule = configuration.getConfigurationModule().getModule();
+        if (location.getModule() == null || !location.getModule().equals(originalModule)) {
+            return false;
+        }
+
+        setupConfigurationModule(context, configuration);
+        configuration.restoreOriginalModule(originalModule);
 
         return true;
     }

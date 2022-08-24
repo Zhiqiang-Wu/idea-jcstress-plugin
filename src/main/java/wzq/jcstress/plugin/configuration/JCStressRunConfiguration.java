@@ -30,6 +30,7 @@ public class JCStressRunConfiguration extends JavaRunConfigurationBase {
     private boolean passParentEnvs;
     private ShortenCommandLine shortenCommandLine;
     private boolean alternativeJrePathEnabled;
+    private String alternativeJrePath;
 
     public JCStressRunConfiguration(String name, @NotNull JavaRunConfigurationModule configurationModule, @NotNull ConfigurationFactory factory) {
         super(name, configurationModule, factory);
@@ -57,12 +58,12 @@ public class JCStressRunConfiguration extends JavaRunConfigurationBase {
 
     @Override
     public @Nullable String getAlternativeJrePath() {
-        return null;
+        return this.alternativeJrePath;
     }
 
     @Override
-    public void setAlternativeJrePath(@Nullable String s) {
-
+    public void setAlternativeJrePath(@Nullable String path) {
+        this.alternativeJrePath = path;
     }
 
     @Override
