@@ -5,10 +5,10 @@
 
     <!-- Public plugin name should be written in Title Case.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
-    <name>Jcstress</name>
+    <name>JCStress</name>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
-    <vendor email="755960141@qq.com" url="https://www.yourcompany.com">Wuzhiqiang</vendor>
+    <vendor email="755960141@qq.com" url="https://github.com/Zhiqiang-Wu/idea-jcstress-plugin">Wuzhiqiang</vendor>
 
     <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
@@ -20,10 +20,11 @@
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.java</depends>
 
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
-
+        <runLineMarkerContributor language="JAVA" implementationClass="wzq.jcstress.plugin.configuration.JCStressRunLineMarkerContributor"/>
     </extensions>
 </idea-plugin>
