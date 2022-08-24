@@ -14,7 +14,7 @@
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description><![CDATA[
-    <p>Plugin for generating and running Jcstress Test from your IDE</p>
+    <p>Plugin for running JCStress test from your IDE</p>
   ]]></description>
 
     <!-- Product and plugin compatibility requirements.
@@ -25,6 +25,7 @@
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
+        <configurationType implementation="wzq.jcstress.plugin.configuration.JCStressConfigurationType"/>
         <runLineMarkerContributor language="JAVA" implementationClass="wzq.jcstress.plugin.configuration.JCStressRunLineMarkerContributor"/>
     </extensions>
 </idea-plugin>
