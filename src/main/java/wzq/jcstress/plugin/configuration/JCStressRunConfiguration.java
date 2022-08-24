@@ -14,6 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -25,7 +26,7 @@ public class JCStressRunConfiguration extends JavaRunConfigurationBase {
     private String vmParameters;
     private String programParameters;
     private String workingDirectory;
-    private Map<String, String> envs;
+    private Map<String, String> envs = new HashMap<>();
     private boolean passParentEnvs;
     private ShortenCommandLine shortenCommandLine;
     private boolean alternativeJrePathEnabled;
