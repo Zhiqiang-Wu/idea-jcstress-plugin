@@ -14,7 +14,8 @@
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description><![CDATA[
-    <p>Plugin for running JCStress test from your IDE</p>
+    <p>Supports <a href="https://github.com/openjdk/jcstress">JCStress</a> test</p>
+    <p><a href="https://github.com/Zhiqiang-Wu/idea-jcstress-plugin">GitHub</a></p>
   ]]></description>
 
     <!-- Product and plugin compatibility requirements.

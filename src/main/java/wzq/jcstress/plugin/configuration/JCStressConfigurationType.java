@@ -3,11 +3,10 @@ package wzq.jcstress.plugin.configuration;
 import com.intellij.execution.configurations.JavaRunConfigurationModule;
 import com.intellij.execution.configurations.RunConfiguration;
 import com.intellij.execution.configurations.SimpleConfigurationType;
+import com.intellij.icons.AllIcons;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.NotNullLazyValue;
 import org.jetbrains.annotations.NotNull;
-
-import static com.intellij.icons.AllIcons.Actions.ProfileYellow;
 
 /**
  * @author 吴志强
@@ -16,7 +15,7 @@ import static com.intellij.icons.AllIcons.Actions.ProfileYellow;
 public class JCStressConfigurationType extends SimpleConfigurationType {
 
     public JCStressConfigurationType() {
-        super("jcstress-id", "JCStress", "Configuration to run a jcstress test", NotNullLazyValue.createValue(() -> ProfileYellow));
+        super("jcstress-id", "JCStress", "Configuration to run a jcstress test", NotNullLazyValue.createValue(() -> AllIcons.Actions.ProfileYellow));
     }
 
     @Override
