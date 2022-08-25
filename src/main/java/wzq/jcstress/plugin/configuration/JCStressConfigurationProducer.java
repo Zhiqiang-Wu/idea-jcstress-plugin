@@ -44,7 +44,8 @@ public class JCStressConfigurationProducer extends JavaRunConfigurationProducerB
         configuration.restoreOriginalModule(originalModule);
         configuration.setName(psiClass.getName());
         configuration.setWorkingDirectory("$MODULE_WORKING_DIR$");
-        configuration.setProgramParameters(psiClass.getQualifiedName());
+        configuration.setJCStressClass(psiClass.getQualifiedName());
+        configuration.setProgramParameters(String.format("-t %s -v", psiClass.getQualifiedName()));
 
         return true;
     }
@@ -65,7 +66,7 @@ public class JCStressConfigurationProducer extends JavaRunConfigurationProducerB
             return false;
         }
 
-        if (!Objects.equals(psiClass.getName(), configuration.getProgramParameters())) {
+        if (!Objects.equals(psiClass.getQualifiedName(), configuration.getJCStressClass())) {
             return false;
         }
 

@@ -31,7 +31,7 @@ public class JCStressCommandLineState extends BaseJavaApplicationCommandLineStat
 
         int classpathType = JavaParametersUtil.getClasspathType(
                 this.myConfiguration.getConfigurationModule(),
-                this.myConfiguration.getProgramParameters(),
+                this.myConfiguration.getJCStressClass(),
                 true);
         classpathType = switch (classpathType) {
             case JavaParameters.JDK_AND_CLASSES -> JavaParameters.CLASSES_ONLY;
@@ -41,6 +41,7 @@ public class JCStressCommandLineState extends BaseJavaApplicationCommandLineStat
         JavaParametersUtil.configureModule(this.myConfiguration.getConfigurationModule(), parameters, classpathType, null);
 
         if (parameters.getJdk() == null) {
+            // 没有设置jdk的情况下优先使用模块jdk，没有设置模块jdk的情况下使用项目jdk
             Module module = this.myConfiguration.getConfigurationModule().getModule();
             Sdk jdk;
             if (module == null) {

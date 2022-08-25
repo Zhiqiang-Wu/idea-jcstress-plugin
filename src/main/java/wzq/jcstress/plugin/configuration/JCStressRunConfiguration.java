@@ -31,6 +31,7 @@ public class JCStressRunConfiguration extends JavaRunConfigurationBase {
     private ShortenCommandLine shortenCommandLine;
     private boolean alternativeJrePathEnabled;
     private String alternativeJrePath;
+    private String jcstressClass;
 
     public JCStressRunConfiguration(String name, @NotNull JavaRunConfigurationModule configurationModule, @NotNull ConfigurationFactory factory) {
         super(name, configurationModule, factory);
@@ -124,6 +125,14 @@ public class JCStressRunConfiguration extends JavaRunConfigurationBase {
     @Override
     public void setShortenCommandLine(@Nullable ShortenCommandLine shortenCommandLine) {
         this.shortenCommandLine = shortenCommandLine;
+    }
+
+    public String getJCStressClass() {
+        return jcstressClass;
+    }
+
+    public void setJCStressClass(String jcstressClass) {
+        this.jcstressClass = jcstressClass;
     }
 
     @Override
