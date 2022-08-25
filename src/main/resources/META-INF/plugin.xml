@@ -15,7 +15,7 @@
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description><![CDATA[
     <p>Supports <a href="https://github.com/openjdk/jcstress">JCStress</a> test</p>
-    <p><a href="https://github.com/Zhiqiang-Wu/idea-jcstress-plugin">GitHub</a></p>
+    <p><a href="https://github.com/Zhiqiang-Wu/idea-jcstress-plugin">Source code on GitHub</a></p>
   ]]></description>
 
     <!-- Product and plugin compatibility requirements.
