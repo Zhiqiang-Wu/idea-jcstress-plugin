@@ -2,12 +2,13 @@ package wzq.jcstress.plugin.configuration;
 
 import com.intellij.execution.lineMarker.RunLineMarkerContributor;
 import com.intellij.openapi.actionSystem.ActionManager;
-import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiElement;
 import com.intellij.util.Function;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.uast.UClass;
+import org.jetbrains.uast.UElement;
+import org.jetbrains.uast.UastUtils;
 
 import static com.intellij.icons.AllIcons.Actions.ProfileYellow;
 
@@ -19,9 +20,9 @@ public class JCStressRunLineMarkerContributor extends RunLineMarkerContributor {
 
     @Override
     public @Nullable Info getInfo(@NotNull PsiElement psiElement) {
-        if (psiElement instanceof PsiClass psiClass && psiClass.hasAnnotation("org.openjdk.jcstress.annotations.JCStressTest")) {
-            final AnAction[] actions = new AnAction[]{ActionManager.getInstance().getAction("RunClass")};
-            return new Info(ProfileYellow, new TooltipProvider(), actions);
+        UElement uElement = UastUtils.getUParentForIdentifier(psiElement);
+        if (uElement instanceof UClass uClass && uClass.hasAnnotation("org.openjdk.jcstress.annotations.JCStressTest")) {
+            return new Info(ProfileYellow, new TooltipProvider(), ActionManager.getInstance().getAction("RunClass"));
         }
         return null;
     }

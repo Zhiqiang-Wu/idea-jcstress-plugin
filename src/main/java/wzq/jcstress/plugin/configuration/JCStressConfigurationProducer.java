@@ -8,9 +8,10 @@ import com.intellij.execution.configurations.ConfigurationTypeUtil;
 import com.intellij.execution.junit.JavaRunConfigurationProducerBase;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.util.Ref;
-import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiElement;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.uast.UClass;
+import org.jetbrains.uast.UastUtils;
 
 import java.util.Objects;
 
@@ -27,25 +28,24 @@ public class JCStressConfigurationProducer extends JavaRunConfigurationProducerB
             return false;
         }
 
-        PsiElement psiElement = location.getPsiElement();
-        if (!(psiElement instanceof PsiClass psiClass)) {
+        UClass uClass = UastUtils.findContaining(location.getPsiElement(), UClass.class);
+        if (uClass == null) {
+            return false;
+        }
+        if (!uClass.hasAnnotation("org.openjdk.jcstress.annotations.JCStressTest")) {
             return false;
         }
 
-        if (!psiClass.hasAnnotation("org.openjdk.jcstress.annotations.JCStressTest")) {
-            return false;
-        }
-
-        sourceElement.set(psiClass);
+        sourceElement.set(uClass);
 
         this.setupConfigurationModule(context, configuration);
 
         Module originalModule = configuration.getConfigurationModule().getModule();
         configuration.restoreOriginalModule(originalModule);
-        configuration.setName(psiClass.getName());
+        configuration.setName(uClass.getName());
         configuration.setWorkingDirectory("$MODULE_WORKING_DIR$");
-        configuration.setJCStressClass(psiClass.getQualifiedName());
-        configuration.setProgramParameters(String.format("-t %s -v", psiClass.getQualifiedName()));
+        configuration.setJCStressClass(uClass.getQualifiedName());
+        configuration.setProgramParameters(String.format("-t %s -v", uClass.getQualifiedName()));
 
         return true;
     }
@@ -57,16 +57,15 @@ public class JCStressConfigurationProducer extends JavaRunConfigurationProducerB
             return false;
         }
 
-        PsiElement psiElement = location.getPsiElement();
-        if (!(psiElement instanceof PsiClass psiClass)) {
+        UClass uClass = UastUtils.findContaining(location.getPsiElement(), UClass.class);
+        if (uClass == null) {
+            return false;
+        }
+        if (!uClass.hasAnnotation("org.openjdk.jcstress.annotations.JCStressTest")) {
             return false;
         }
 
-        if (!psiClass.hasAnnotation("org.openjdk.jcstress.annotations.JCStressTest")) {
-            return false;
-        }
-
-        if (!Objects.equals(psiClass.getQualifiedName(), configuration.getJCStressClass())) {
+        if (!Objects.equals(uClass.getQualifiedName(), configuration.getJCStressClass())) {
             return false;
         }
 
@@ -76,7 +75,7 @@ public class JCStressConfigurationProducer extends JavaRunConfigurationProducerB
             return false;
         }
 
-        setupConfigurationModule(context, configuration);
+        this.setupConfigurationModule(context, configuration);
         configuration.restoreOriginalModule(originalModule);
 
         return true;
