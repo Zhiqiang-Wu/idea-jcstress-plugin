@@ -10,6 +10,9 @@ import com.intellij.execution.configurations.RunProfileState;
 import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.options.SettingsEditor;
+import com.intellij.openapi.util.InvalidDataException;
+import com.intellij.openapi.util.WriteExternalException;
+import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -148,5 +151,31 @@ public class JCStressRunConfiguration extends JavaRunConfigurationBase {
     @Override
     public @Nullable RunProfileState getState(@NotNull Executor executor, @NotNull ExecutionEnvironment executionEnvironment) {
         return new JCStressCommandLineState(executionEnvironment, this);
+    }
+
+    @Override
+    public void readExternal(@NotNull Element element) throws InvalidDataException {
+        super.readExternal(element);
+        this.vmParameters = element.getAttributeValue("vmParameters");
+        this.programParameters = element.getAttributeValue("programParameters");
+        this.workingDirectory = element.getAttributeValue("workingDirectory");
+        this.jcstressClass = element.getAttributeValue("jcstressClass");
+    }
+
+    @Override
+    public void writeExternal(@NotNull Element element) throws WriteExternalException {
+        super.writeExternal(element);
+        if (this.vmParameters != null) {
+            element.setAttribute("vmParameters", this.vmParameters);
+        }
+        if (this.programParameters != null) {
+            element.setAttribute("programParameters", this.programParameters);
+        }
+        if (this.workingDirectory != null) {
+            element.setAttribute("workingDirectory", this.workingDirectory);
+        }
+        if (this.jcstressClass != null) {
+            element.setAttribute("jcstressClass", this.jcstressClass);
+        }
     }
 }
