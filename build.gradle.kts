@@ -1,6 +1,7 @@
 plugins {
     id("java")
     id("org.jetbrains.intellij") version "1.8.0"
+    id("co.uzzu.dotenv.gradle") version "2.0.0"
 }
 
 group = "wzq.jcstress.plugin"
@@ -33,12 +34,12 @@ tasks {
     }
 
     signPlugin {
-        certificateChain.set(System.getenv("CERTIFICATE_CHAIN"))
-        privateKey.set(System.getenv("PRIVATE_KEY"))
-        password.set(System.getenv("PRIVATE_KEY_PASSWORD"))
+        certificateChain.set(env.CERTIFICATE_CHAIN.value)
+        privateKey.set(env.PRIVATE_KEY.value)
+        password.set(env.PRIVATE_KEY_PASSWORD.value)
     }
 
     publishPlugin {
-        token.set(System.getenv("PUBLISH_TOKEN"))
+        token.set(env.PUBLISH_TOKEN.value)
     }
 }
