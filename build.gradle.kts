@@ -34,12 +34,12 @@ tasks {
     }
 
     signPlugin {
-        certificateChain.set(env.CERTIFICATE_CHAIN.value)
-        privateKey.set(env.PRIVATE_KEY.value)
-        password.set(env.PRIVATE_KEY_PASSWORD.value)
+        // certificateChain.set(env.CERTIFICATE_CHAIN.value)
+        // privateKey.set(env.PRIVATE_KEY.value)
+        // password.set(env.PRIVATE_KEY_PASSWORD.value)
     }
 
     publishPlugin {
-        token.set(env.PUBLISH_TOKEN.value)
+        // token.set(env.PUBLISH_TOKEN.value)
     }
 }
