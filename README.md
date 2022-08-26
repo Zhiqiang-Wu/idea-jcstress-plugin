@@ -8,6 +8,10 @@
 
 ## Usage
 
+![](./resources/usage1.png)
+
+![](./resources/usage2.png)
+
 ## Language
 
 [![java](https://skillicons.dev/icons?i=java)](https://developer.oracle.com/java)
