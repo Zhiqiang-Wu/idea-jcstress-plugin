@@ -18,6 +18,13 @@
     <p><a href="https://github.com/Zhiqiang-Wu/idea-jcstress-plugin">Source code on GitHub</a></p>
   ]]></description>
 
+    <change-notes><![CDATA[
+    v1.0.1
+    <ul>
+        <li>Update icon</li>
+    </ul>
+]]></change-notes>
+
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
