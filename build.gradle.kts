@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "wzq.jcstress.plugin"
-version = "1.0.1"
+version = "1.0.2"
 
 repositories {
     maven {
