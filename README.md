@@ -1,16 +1,16 @@
 <p align="center">
-    <img width="150px" height="150px" src='resources/logo.svg' alt="">
+    <img width="150px" height="150px" src='docs/logo.svg' alt="">
 </p>
 
 # Intellij IDEA plugin for Java Concurrency Stress
 
-![](https://img.shields.io/jetbrains/plugin/v/wzq.jcstress.plugin) ![](https://img.shields.io/jetbrains/plugin/r/stars/wzq.jcstress.plugin) ![](https://img.shields.io/jetbrains/plugin/d/wzq.jcstress.plugin) ![](https://img.shields.io/github/workflow/status/Zhiqiang-Wu/idea-jcstress-plugin/Publish) ![](https://img.shields.io/github/license/Zhiqiang-Wu/idea-jcstress-plugin) ![visitors](https://visitor-badge.glitch.me/badge?page_id=Zhiqiang-Wu.idea-jcstress-plugin)
+![](https://img.shields.io/jetbrains/plugin/v/wzq.jcstress.plugin) ![](https://img.shields.io/jetbrains/plugin/r/stars/wzq.jcstress.plugin) ![](https://img.shields.io/jetbrains/plugin/d/wzq.jcstress.plugin) ![](https://img.shields.io/github/actions/workflow/status/Zhiqiang-Wu/idea-jcstress-plugin/publish.yml) ![](https://img.shields.io/github/license/Zhiqiang-Wu/idea-jcstress-plugin)
 
 ## Usage
 
-![](./resources/usage1.png)
+![](docs/usage1.png)
 
-![](./resources/usage2.png)
+![](docs/usage2.png)
 
 ## Language
 
