@@ -11,13 +11,17 @@
   ]]></description>
 
     <change-notes><![CDATA[
-    v1.0.1
+    v1.0.3
     <ul>
-        <li>Update icon</li>
+        <li>Support for 2024.2</li>
     </ul>
     v1.0.2
     <ul>
         <li>Support for 2024.1</li>
+    </ul>
+    v1.0.1
+    <ul>
+        <li>Update icon</li>
     </ul>
 ]]></change-notes>
 

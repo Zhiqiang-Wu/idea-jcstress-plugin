@@ -1,11 +1,11 @@
 plugins {
     id("java")
-    id("org.jetbrains.kotlin.jvm") version "1.9.21"
-    id("org.jetbrains.intellij") version "1.16.1"
+    id("org.jetbrains.kotlin.jvm") version "1.9.24"
+    id("org.jetbrains.intellij") version "1.17.3"
 }
 
 group = "wzq.jcstress.plugin"
-version = "1.0.2"
+version = "1.0.3"
 
 repositories {
     maven {
@@ -16,7 +16,7 @@ repositories {
 }
 
 intellij {
-    version.set("2023.3")
+    version.set("2024.2")
     type.set("IC")
 
     plugins.set(listOf("com.intellij.java"))
@@ -33,8 +33,8 @@ tasks {
     }
 
     patchPluginXml {
-        sinceBuild.set("222")
-        untilBuild.set("241.*")
+        sinceBuild.set("242")
+        untilBuild.set("242.*")
     }
 
     signPlugin {
