@@ -1,7 +1,7 @@
 package wzq.jcstress.plugin.configuration;
 
+import com.intellij.execution.lineMarker.ExecutorAction;
 import com.intellij.execution.lineMarker.RunLineMarkerContributor;
-import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.psi.PsiElement;
 import org.jetbrains.annotations.NotNull;
@@ -21,8 +21,8 @@ public class JCStressRunLineMarkerContributor extends RunLineMarkerContributor {
         UElement uElement = UastUtils.getUParentForIdentifier(psiElement);
         if (uElement instanceof UClass uClass
                 && uClass.hasAnnotation("org.openjdk.jcstress.annotations.JCStressTest")) {
-            AnAction[] actions = {ActionManager.getInstance().getAction("RunClass")};
-            return new Info(Icons.RUN, actions);
+            AnAction[] actions = ExecutorAction.getActions(1);
+            return new Info(Icons.RUN, actions, null);
         }
         return null;
     }

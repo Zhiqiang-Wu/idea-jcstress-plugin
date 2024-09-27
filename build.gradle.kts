@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "wzq.jcstress.plugin"
-version = "1.0.3"
+version = "1.0.4"
 
 repositories {
     maven {
@@ -47,7 +47,7 @@ tasks {
 
     patchPluginXml {
         sinceBuild.set("242")
-        untilBuild.set("242.*")
+        untilBuild.set("243.*")
     }
 
     signPlugin {
