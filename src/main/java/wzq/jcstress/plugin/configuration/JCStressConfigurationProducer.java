@@ -1,5 +1,7 @@
 package wzq.jcstress.plugin.configuration;
 
+import java.util.Objects;
+
 import com.intellij.execution.JavaExecutionUtil;
 import com.intellij.execution.Location;
 import com.intellij.execution.actions.ConfigurationContext;
@@ -13,16 +15,18 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.uast.UClass;
 import org.jetbrains.uast.UastUtils;
 
-import java.util.Objects;
-
 /**
  * @author 吴志强
  * @date 2022/8/24
  */
-public class JCStressConfigurationProducer extends JavaRunConfigurationProducerBase<JCStressRunConfiguration> {
+public class JCStressConfigurationProducer
+        extends JavaRunConfigurationProducerBase<JCStressRunConfiguration> {
 
     @Override
-    protected boolean setupConfigurationFromContext(@NotNull JCStressRunConfiguration configuration, @NotNull ConfigurationContext context, @NotNull Ref<PsiElement> sourceElement) {
+    protected boolean setupConfigurationFromContext(
+            @NotNull JCStressRunConfiguration configuration,
+            @NotNull ConfigurationContext context,
+            @NotNull Ref<PsiElement> sourceElement) {
         Location location = context.getLocation();
         if (location == null) {
             return false;
@@ -51,7 +55,8 @@ public class JCStressConfigurationProducer extends JavaRunConfigurationProducerB
     }
 
     @Override
-    public boolean isConfigurationFromContext(@NotNull JCStressRunConfiguration configuration, @NotNull ConfigurationContext context) {
+    public boolean isConfigurationFromContext(
+            @NotNull JCStressRunConfiguration configuration, @NotNull ConfigurationContext context) {
         Location location = context.getLocation();
         if (location == null) {
             return false;
@@ -83,7 +88,8 @@ public class JCStressConfigurationProducer extends JavaRunConfigurationProducerB
 
     @Override
     public @NotNull ConfigurationFactory getConfigurationFactory() {
-        JCStressConfigurationType configurationType = ConfigurationTypeUtil.findConfigurationType(JCStressConfigurationType.class);
+        JCStressConfigurationType configurationType =
+                ConfigurationTypeUtil.findConfigurationType(JCStressConfigurationType.class);
         return configurationType.getConfigurationFactories()[0];
     }
 }

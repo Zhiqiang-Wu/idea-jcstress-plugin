@@ -1,8 +1,8 @@
 package wzq.jcstress.plugin.configuration;
 
-import com.intellij.openapi.util.IconLoader;
-
 import javax.swing.Icon;
+
+import com.intellij.openapi.util.IconLoader;
 
 /**
  * @author 吴志强
@@ -10,6 +10,6 @@ import javax.swing.Icon;
  */
 public final class Icons {
 
-    public final static Icon RUN = IconLoader.getIcon("/run.svg", Icons.class);
-    public final static Icon CONFIG = IconLoader.getIcon("/config.svg", Icons.class);
+    public static final Icon RUN = IconLoader.getIcon("/run.svg", Icons.class);
+    public static final Icon CONFIG = IconLoader.getIcon("/config.svg", Icons.class);
 }

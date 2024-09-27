@@ -19,7 +19,8 @@ public class JCStressRunLineMarkerContributor extends RunLineMarkerContributor {
     @Override
     public @Nullable Info getInfo(@NotNull PsiElement psiElement) {
         UElement uElement = UastUtils.getUParentForIdentifier(psiElement);
-        if (uElement instanceof UClass uClass && uClass.hasAnnotation("org.openjdk.jcstress.annotations.JCStressTest")) {
+        if (uElement instanceof UClass uClass
+                && uClass.hasAnnotation("org.openjdk.jcstress.annotations.JCStressTest")) {
             AnAction[] actions = {ActionManager.getInstance().getAction("RunClass")};
             return new Info(Icons.RUN, actions);
         }

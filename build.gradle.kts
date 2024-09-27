@@ -1,7 +1,10 @@
+import com.diffplug.spotless.LineEnding
+
 plugins {
     id("java")
     id("org.jetbrains.kotlin.jvm") version "1.9.24"
     id("org.jetbrains.intellij") version "1.17.3"
+    id("com.diffplug.spotless") version "7.0.0.BETA2"
 }
 
 group = "wzq.jcstress.plugin"
@@ -20,6 +23,16 @@ intellij {
     type.set("IC")
 
     plugins.set(listOf("com.intellij.java"))
+}
+
+spotless {
+    lineEndings = LineEnding.UNIX
+    java {
+        googleJavaFormat()
+        importOrder("java|javax")
+        indentWithTabs(2)
+        indentWithSpaces(4)
+    }
 }
 
 tasks {

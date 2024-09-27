@@ -14,11 +14,16 @@ import org.jetbrains.annotations.NotNull;
 public class JCStressConfigurationType extends SimpleConfigurationType {
 
     public JCStressConfigurationType() {
-        super("jcstress-id", "JCStress", "Configuration to run a jcstress test", NotNullLazyValue.createValue(() -> Icons.CONFIG));
+        super(
+                "jcstress-id",
+                "JCStress",
+                "Configuration to run a jcstress test",
+                NotNullLazyValue.createValue(() -> Icons.CONFIG));
     }
 
     @Override
     public @NotNull RunConfiguration createTemplateConfiguration(@NotNull Project project) {
-        return new JCStressRunConfiguration("jcstress", new JavaRunConfigurationModule(project, false), this);
+        return new JCStressRunConfiguration(
+                "jcstress", new JavaRunConfigurationModule(project, false), this);
     }
 }

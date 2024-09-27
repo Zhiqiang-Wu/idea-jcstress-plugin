@@ -1,10 +1,10 @@
 package wzq.jcstress.plugin.configuration;
 
+import javax.swing.JComponent;
+
 import com.intellij.execution.ui.CommonJavaParametersPanel;
 import com.intellij.openapi.options.SettingsEditor;
 import org.jetbrains.annotations.NotNull;
-
-import javax.swing.JComponent;
 
 /**
  * @author 吴志强

@@ -1,5 +1,9 @@
 package wzq.jcstress.plugin.configuration;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+
 import com.intellij.execution.Executor;
 import com.intellij.execution.JavaRunConfigurationBase;
 import com.intellij.execution.ShortenCommandLine;
@@ -15,10 +19,6 @@ import com.intellij.openapi.util.WriteExternalException;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author 吴志强
@@ -36,7 +36,10 @@ public class JCStressRunConfiguration extends JavaRunConfigurationBase {
     private String alternativeJrePath;
     private String jcstressClass;
 
-    public JCStressRunConfiguration(String name, @NotNull JavaRunConfigurationModule configurationModule, @NotNull ConfigurationFactory factory) {
+    public JCStressRunConfiguration(
+            String name,
+            @NotNull JavaRunConfigurationModule configurationModule,
+            @NotNull ConfigurationFactory factory) {
         super(name, configurationModule, factory);
     }
 
@@ -149,7 +152,8 @@ public class JCStressRunConfiguration extends JavaRunConfigurationBase {
     }
 
     @Override
-    public @Nullable RunProfileState getState(@NotNull Executor executor, @NotNull ExecutionEnvironment executionEnvironment) {
+    public @Nullable RunProfileState getState(
+            @NotNull Executor executor, @NotNull ExecutionEnvironment executionEnvironment) {
         return new JCStressCommandLineState(executionEnvironment, this);
     }
 
