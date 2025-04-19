@@ -1,10 +1,12 @@
 import com.diffplug.spotless.LineEnding
+import org.jetbrains.changelog.Changelog
 
 plugins {
     id("java")
-    id("org.jetbrains.kotlin.jvm") version "1.9.24"
-    id("org.jetbrains.intellij") version "1.17.3"
-    id("com.diffplug.spotless") version "7.0.0.BETA2"
+    id("org.jetbrains.kotlin.jvm") version "1.9.25"
+    id("org.jetbrains.intellij.platform") version "2.3.0"
+    id("com.diffplug.spotless") version "7.0.2"
+    id("org.jetbrains.changelog") version "2.2.1"
 }
 
 group = "wzq.jcstress.plugin"
@@ -14,24 +16,41 @@ repositories {
     maven {
         url = uri("https://maven.aliyun.com/repository/public/")
     }
-    mavenLocal()
     mavenCentral()
+    intellijPlatform {
+        defaultRepositories()
+    }
 }
 
-intellij {
-    version.set("2024.2")
-    type.set("IC")
-
-    plugins.set(listOf("com.intellij.java"))
+dependencies {
+    intellijPlatform {
+        create("IC", "2025.1")
+        testFramework(org.jetbrains.intellij.platform.gradle.TestFrameworkType.Platform)
+    }
 }
 
 spotless {
     lineEndings = LineEnding.UNIX
-    java {
-        googleJavaFormat()
-        importOrder("java|javax")
-        indentWithTabs(2)
-        indentWithSpaces(4)
+    kotlin {
+        ktlint()
+    }
+}
+
+intellijPlatform {
+    pluginConfiguration {
+        ideaVersion {
+            sinceBuild = "242"
+        }
+
+        changeNotes = provider {
+            changelog.render(Changelog.OutputType.HTML)
+        }
+    }
+
+    pluginVerification {
+        ides {
+            recommended()
+        }
     }
 }
 
@@ -43,20 +62,7 @@ tasks {
     }
     withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         kotlinOptions.jvmTarget = "21"
-    }
-
-    patchPluginXml {
-        sinceBuild.set("242")
-        untilBuild.set("243.*")
-    }
-
-    signPlugin {
-        certificateChain.set(System.getenv("CERTIFICATE_CHAIN"))
-        privateKey.set(System.getenv("PRIVATE_KEY"))
-        password.set(System.getenv("PRIVATE_KEY_PASSWORD"))
-    }
-
-    publishPlugin {
-        token.set(System.getenv("PUBLISH_TOKEN"))
+        kotlinOptions.apiVersion = "2.1"
+        kotlinOptions.languageVersion = "2.1"
     }
 }

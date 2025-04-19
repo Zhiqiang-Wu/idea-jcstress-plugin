@@ -3,16 +3,12 @@
 
     <name>JCStress</name>
 
-    <vendor email="755960141@qq.com" url="https://github.com/Zhiqiang-Wu">Wuzhiqiang</vendor>
+    <vendor email="wzqiangg@qq.com" url="https://github.com/Zhiqiang-Wu">Zhiqiang Wu</vendor>
 
     <description><![CDATA[
     <p>Supports <a href="https://github.com/openjdk/jcstress">JCStress</a> test</p>
     <p><a href="https://github.com/Zhiqiang-Wu/idea-jcstress-plugin">Source code on GitHub</a></p>
   ]]></description>
-
-    <change-notes><![CDATA[
-      Support for 2024.3
-]]></change-notes>
 
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.java</depends>
