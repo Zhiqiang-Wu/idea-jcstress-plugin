@@ -13,11 +13,11 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <configurationType implementation="wzq.jcstress.plugin.configuration.JCStressConfigurationType"/>
-        <runConfigurationProducer implementation="wzq.jcstress.plugin.configuration.JCStressConfigurationProducer"/>
+        <configurationType implementation="wzq.jcstress.plugin.JCStressConfigurationType"/>
+        <runConfigurationProducer implementation="wzq.jcstress.plugin.JCStressConfigurationProducer"/>
         <runLineMarkerContributor
                 language="JAVA"
-                implementationClass="wzq.jcstress.plugin.configuration.JCStressRunLineMarkerContributor"
+                implementationClass="wzq.jcstress.plugin.JCStressRunLineMarkerContributor"
         />
     </extensions>
 </idea-plugin>
