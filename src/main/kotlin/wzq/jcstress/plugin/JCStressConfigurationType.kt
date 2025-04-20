@@ -6,7 +6,6 @@ import com.intellij.execution.configurations.SimpleConfigurationType
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.util.NotNullFactory
 import com.intellij.openapi.util.NotNullLazyValue
-import wzq.jcstress.plugin.configuration.Icons
 
 /**
  * @author 吴志强

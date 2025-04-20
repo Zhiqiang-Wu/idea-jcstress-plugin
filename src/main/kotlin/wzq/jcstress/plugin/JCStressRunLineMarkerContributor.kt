@@ -5,7 +5,6 @@ import com.intellij.execution.lineMarker.RunLineMarkerContributor
 import com.intellij.psi.PsiElement
 import org.jetbrains.uast.UClass
 import org.jetbrains.uast.getUParentForIdentifier
-import wzq.jcstress.plugin.configuration.Icons
 
 /**
  * @author 吴志强

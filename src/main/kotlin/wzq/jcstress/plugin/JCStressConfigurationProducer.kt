@@ -9,8 +9,6 @@ import com.intellij.openapi.util.Ref
 import com.intellij.psi.PsiElement
 import org.jetbrains.uast.UClass
 import org.jetbrains.uast.findContaining
-import wzq.jcstress.plugin.JCStressConfigurationType
-import kotlin.jvm.java
 
 /**
  * @author 吴志强
