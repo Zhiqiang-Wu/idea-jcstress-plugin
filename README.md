@@ -4,7 +4,7 @@
 
 # Intellij IDEA plugin for Java Concurrency Stress
 
-![](https://img.shields.io/jetbrains/plugin/v/wzq.jcstress.plugin) ![](https://img.shields.io/jetbrains/plugin/r/stars/wzq.jcstress.plugin) ![](https://img.shields.io/jetbrains/plugin/d/wzq.jcstress.plugin) ![](https://img.shields.io/github/actions/workflow/status/Zhiqiang-Wu/idea-jcstress-plugin/publish.yml) ![](https://img.shields.io/github/license/Zhiqiang-Wu/idea-jcstress-plugin)
+![](https://img.shields.io/jetbrains/plugin/v/wzq.jcstress.plugin) ![](https://img.shields.io/jetbrains/plugin/r/stars/wzq.jcstress.plugin) ![](https://img.shields.io/jetbrains/plugin/d/wzq.jcstress.plugin) ![](https://img.shields.io/github/actions/workflow/status/Zhiqiang-Wu/idea-jcstress-plugin/release.yml) ![](https://img.shields.io/github/license/Zhiqiang-Wu/idea-jcstress-plugin)
 
 ## Usage
 
@@ -14,7 +14,7 @@
 
 ## Language
 
-[![java](https://skillicons.dev/icons?i=java)](https://developer.oracle.com/java)
+[![Kotlin](https://skillicons.dev/icons?i=kotlin)](https://kotlinlang.org)
 
 ## CI/CD
 
