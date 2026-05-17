@@ -1,31 +1,26 @@
 import com.diffplug.spotless.LineEnding
 import org.jetbrains.changelog.Changelog
+import org.jetbrains.intellij.platform.gradle.TestFrameworkType
 
 plugins {
-    id("java")
-    id("org.jetbrains.kotlin.jvm") version "1.9.25"
-    id("org.jetbrains.intellij.platform") version "2.3.0"
-    id("com.diffplug.spotless") version "7.0.2"
-    id("org.jetbrains.changelog") version "2.2.1"
+    id("org.jetbrains.kotlin.jvm")
+    id("org.jetbrains.intellij.platform")
+    id("com.diffplug.spotless")
+    id("org.jetbrains.changelog")
 }
 
-group = "wzq.jcstress.plugin"
-version = "1.0.5"
-
-repositories {
-    maven {
-        url = uri("https://maven.aliyun.com/repository/public/")
-    }
-    mavenCentral()
-    intellijPlatform {
-        defaultRepositories()
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
     }
 }
 
 dependencies {
+    testImplementation(libs.junit)
+
     intellijPlatform {
-        create("IC", "2025.1")
-        testFramework(org.jetbrains.intellij.platform.gradle.TestFrameworkType.Platform)
+        intellijIdea("2026.1")
+        testFramework(TestFrameworkType.Platform)
 
         bundledPlugin("com.intellij.java")
     }
@@ -41,7 +36,7 @@ spotless {
 intellijPlatform {
     pluginConfiguration {
         ideaVersion {
-            sinceBuild = "242"
+            sinceBuild = "261"
         }
 
         changeNotes = provider {
@@ -58,13 +53,17 @@ intellijPlatform {
 
 tasks {
     withType<JavaCompile> {
-        sourceCompatibility = "21"
-        targetCompatibility = "21"
+        sourceCompatibility = "25"
+        targetCompatibility = "25"
         options.encoding = "UTF-8"
     }
-    withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-        kotlinOptions.jvmTarget = "21"
-        kotlinOptions.apiVersion = "2.1"
-        kotlinOptions.languageVersion = "2.1"
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_25)
+        apiVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_3)
+        languageVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_3)
     }
 }
+
